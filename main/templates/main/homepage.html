@@ -7,7 +7,6 @@
         {% for rest_type in all_types %}
             <h1>{{ rest_type.name }}</h1>
             <div class="rest_type">
-                {% for i in '0123456789' %}
                     {% for restaurant in rest_type.restaurants.all %}
                         <a href="{{ restaurant.get_absolute_url }}" style="color: black">
                             <div class="card" style="width: 22rem;">
@@ -23,7 +22,6 @@
                         </a>
 
                     {% endfor %}
-                {% endfor %}
             </div>
         {% endfor %}
         </div>

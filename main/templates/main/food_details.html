@@ -12,7 +12,7 @@
         <h1>{{ food.food_type.name }} из {{ food.restaurant.name }}</h1>
         <h3 style="color: #ffac5e">{{ food.name }}</h3>
         <h5 style="color:rgba(161,161,161,0.9);">Composition:</h5>
-        <p style="color: rgba(161,161,161,0.9); font-size: 14px">{{ food.ingredients.all|to_list }}</p>
+        <p style="color: rgba(161,161,161,0.9); font-size: 14px">{{ food.ingredients.name }}</p>
         <p style="color: dodgerblue; opacity: 1; font-size: 14px; margin-bottom: 0; margin-top: 3.9%">{{ food.price }}₸</p>
         <button class="btn add_to_cart" data-slug="{{ food.slug }}" style="background-color: #5993bb; color: white; height: 2em; padding: 0.35% 2%;">Add to cart</button>
         {{ product.description|linebreaks }}

@@ -74,20 +74,6 @@ class Restaurant(models.Model):
         return reverse('main:restaurant_details', args=[self.slug])
 
 
-class Ingredient(models.Model):
-    name = models.CharField(max_length=100, default='')
-    slug = models.SlugField()
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'ingredient'
-        verbose_name_plural = 'ingredients'
-
-    def __str__(self):
-        return self.name + ' - ' + self.restaurant.name
-
-
 def food_image_folder(instance, filename):
     filename = instance.slug + '.' + filename.split('.')[1]
     return "foods/{}/{}".format(instance.slug, filename)
@@ -99,7 +85,7 @@ class Food(models.Model):
     food_type = models.ForeignKey(FoodType, on_delete=models.CASCADE, related_name='foods')
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, related_name='foods')
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    ingredients = models.ManyToManyField(Ingredient)
+    ingredients = models.TextField()
     image = models.ImageField(upload_to=food_image_folder, blank=True)
 
     class Meta:
