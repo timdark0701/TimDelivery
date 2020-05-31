@@ -46,12 +46,6 @@ class RestaurantSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
-class IngredientSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = models.Ingredient
-        fields = '__all__'
-
-
 class FoodSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Food

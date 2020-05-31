@@ -12,7 +12,9 @@ def register(request):
         form = UserCreationForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            user = form.save()
+            profile = models.Profile.objects.create(user=user)
+            profile.save()
             return redirect('main:login')
         else:
             return redirect('main:register')

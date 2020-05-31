@@ -16,7 +16,7 @@ def order_create(request):
                 models.OrderItem.objects.create(order=order, food=item['product'], price=item['price'],
                                                 quantity=item['quantity'])
             cart.clear()
-            return render(request, 'orders/created.html')
+            return render(request, 'orders/created.html', {'order': order})
         else:
             return redirect('orders:order_create')
     else:
@@ -25,6 +25,3 @@ def order_create(request):
         else:
             form = OrderCreateFrom()
         return render(request, 'orders/create.html', {'cart': cart, 'form': form})
-
-
-

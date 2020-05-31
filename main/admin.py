@@ -22,11 +22,6 @@ class RestaurantAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
-@admin.register(models.Ingredient)
-class IngredientAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name', )}
-
-
 @admin.register(models.Food)
 class FoodAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']

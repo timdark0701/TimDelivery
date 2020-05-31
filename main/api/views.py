@@ -28,11 +28,6 @@ class RestaurantView(viewsets.ModelViewSet):
     serializer_class = serializers.RestaurantSerializer
 
 
-class IngredientView(viewsets.ModelViewSet):
-    queryset = models.Ingredient.objects.all()
-    serializer_class = serializers.IngredientSerializer
-
-
 class FoodView(viewsets.ModelViewSet):
     queryset = models.Food.objects.all()
     serializer_class = serializers.FoodSerializer
@@ -43,7 +38,6 @@ class MainView(viewsets.ViewSet):
     f_type_ser = serializers.FoodTypeSerializer
     rest_ser = serializers.RestaurantSerializer
     r_type_ser = serializers.RestaurantTypeSerializer
-    ing_ser = serializers.IngredientSerializer
     city_ser = serializers.CitySerializer
 
     def context(self, request):
@@ -61,7 +55,6 @@ class MainView(viewsets.ViewSet):
 
     def set_city(self, request, city_id):
         request.session['city_id'] = city_id
-        # return Response({'city_id': request.session['city_id']})
         return redirect('homepage_api')
 
     def restaurant_details(self, request, rest_slug):
