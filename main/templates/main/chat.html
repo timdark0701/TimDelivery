@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block title %}Chat{% endblock title %}
+{% load custom_tags %}
+
+{% block content %}
+    <div class="container">
+        <h1 style="width: 60%; margin-left: auto; margin-right: auto; margin-bottom: 2%">Chat</h1>
+        <div class="chat" id="chatbox">
+            <div class="msg_l">
+                <div class="msg">
+                    <p class="author_name">ChatBot <a class="msg_time">{{ user.date_joined|to_time }}</a></p>
+                    <p class="msg_text">Hello, how can I help you?</p>
+                </div>
+            </div>
+            {% for message in messages %}
+                {% if message.author == user.first_name %}
+                    <div class="msg_r">
+                        <div class="msg">
+                            <p class="author_name">{{ message.author }}<a class="msg_time">{{ message.time|to_time }}</a></p>
+                            <p class="msg_text" id="txt">{{ message.text }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="msg_l">
+                        <div class="msg">
+                            <p class="author_name">{{ message.author }}<a class="msg_time">{{ message.time|to_time }}</a></p>
+                            <p class="msg_text">{{ message.text }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="message_input">
+            <div class="input-group">
+              <select id="select_question" class="custom-select" aria-label="Example select with button addon">
+                  {% for question in questions %}
+                      <option value="{{ question.question_slug }}">{{ question.question }}</option>
+                  {% endfor %}
+              </select>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary msg_send">Send</button>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

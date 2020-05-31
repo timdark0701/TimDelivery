@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load custom_tags %}
+{% block title %}{{ rest.name }}{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="back_img" style="background: url('{{ rest.image.url }}'); opacity: 0.95">
+            <p style="font-size: 70px; width: 100%; padding: 35% 0 0 5%; font-weight: 600; margin-bottom: 0">{{ rest.name }}</p>
+            <p style="font-size: 25px; padding-left: 5%; font-weight: 500">{{ rest.mini_description }}</p>
+        </div>
+        <div class="foods_info">
+            <div class="food_types">
+                <div class="scroll_links">
+                    {% for food_type in all_food_types %}
+                        <a href="#{{ food_type.slug }}" style="font-size: 25px; color: black">{{ food_type.name }}</a>
+                        <br>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="foods">
+                {% for key, val in all_foods.items %}
+                    <h1 id="{{ key.slug }}">{{ key.name }}</h1>
+                    <hr>
+                    {% for food in val %}
+                        <a href="{{ food.get_absolute_url }}" style="text-decoration: none; outline: none; height: 100%">
+                            <div class="particular_food" style="height: 8em">
+                                <div class="food_inner_info">
+                                    <h5 style="color: black">{{ food.name }}</h5>
+                                    <p style="color: darkgray;">{{ food.ingredients.all|to_list }}</p>
+                                    <p style="color: deepskyblue; opacity: 0.9">{{ food.price }}</p>
+                                </div>
+                                <div class="food_img">
+                                    <img src="{{ food.image.url }}" alt="">
+                                </div>
+                            </div>
+                        </a>
+                        <hr>
+                        <br>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="base_info">
+                <h4>About</h4>
+                <br>
+                <h5>Address</h5>
+                <p>{{ rest.address }}</p>
+                <p style="color: darkgray;">{{ rest.postal_code }} {{ rest.city.name }}</p>
+                <hr>
+                <h5>Working hours</h5>
+                <p style="display: inline">Monday - Sunday</p>
+                <p style="color: darkgray; display: inline; margin-left: 2%">{{ rest.open_time.hour }}:{{ rest.open_time.minute }} - {{ rest.close_time.hour }}:{{ rest.close_time.minute }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

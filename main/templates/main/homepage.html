@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% block title %}TimDelivery{% endblock title %}
+
+{% block content %}
+    <div class="homepage_part">
+        <div class="content">
+        {% for rest_type in all_types %}
+            <h1>{{ rest_type.name }}</h1>
+            <div class="rest_type">
+                {% for i in '0123456789' %}
+                    {% for restaurant in rest_type.restaurants.all %}
+                        <a href="{{ restaurant.get_absolute_url }}" style="color: black">
+                            <div class="card" style="width: 22rem;">
+                              <img src="{{ restaurant.image.url }}" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                  <strong class="card-title" style="font-size: 22px">{{ restaurant.name }}</strong>
+                                  <p class="card-text" style="font-size: 14px">{{ restaurant.mini_description }}</p>
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                  <li class="list-group-item"><small>{{ restaurant.rest_type }} | {{ restaurant.open_time }} - {{ restaurant.close_time }}</small></li>
+                              </ul>
+                            </div>
+                        </a>
+
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

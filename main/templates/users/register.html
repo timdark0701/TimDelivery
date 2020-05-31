@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block title %}Registration{% endblock title %}
+
+{% block content %}
+    <div class = "container">
+        <h2>Sign up</h2>
+        <form method="post" style="margin-top: 3%">
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <button type="submit" class="btn btn-primary">Confirm</button>
+        </form>
+    </div>
+{% endblock content %}

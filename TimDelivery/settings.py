@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cart',
+    'users',
+    'main',
+    'orders',
+    'chatbot',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.common_context',
             ],
         },
     },
@@ -118,3 +125,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_in_dev')
+]
+
+
+LOGOUT_REDIRECT_URL = 'main:homepage'
+LOGIN_REDIRECT_URL = 'main:homepage'
+
+CART_SESSION_ID = 'cart'
+
+
+
+# Rest Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}

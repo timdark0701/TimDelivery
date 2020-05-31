@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block title %}
+    Thank you
+{% endblock title %}
+
+{% block content %}
+        <style>
+            button {
+                color: #fff;
+                background: #5993bb;
+                border-radius: 4px;
+                padding: 10px 20px;
+                font-size: 14px;
+                border: 0;
+                outline: none;
+            }
+
+            button:hover {
+                cursor: pointer;
+            }
+
+            button a {
+                color: white;
+                text-decoration: none;
+            }
+
+            button:hover a {
+                color: rgba(238,238,238,0.9);
+            }
+        </style>
+    <div class="container">
+        <h1>Thank you</h1>
+        <p>Your order has been successfully completed. Your order number is
+        <strong>{{ order.id }}</strong>.</p>
+        <button><a href="{% url 'main:homepage' %}" style="width: 100px; font-size: 17px; text-decoration: none; outline: none">Continue shopping</a></button>
+    </div>
+{% endblock content %}

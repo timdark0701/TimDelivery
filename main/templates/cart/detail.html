@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+  Your shopping cart
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+      <h1>Your shopping cart</h1>
+      <table class="cart">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+            <th>Unit price</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart %}
+            {% with food=item.product %}
+              <tr>
+                <td>
+                  <a href="{{ food.get_absolute_url }}">
+                    <img src="{% if food.image %}{{ food.image.url }}
+                    {% else %} # {% endif %}" alt="">
+                  </a>
+                </td>
+                <td>{{ food.name }}</td>
+                <td>
+                    <form action="{% url 'cart:cart_update' food.slug %}" method="post">
+                        {{ item.update_quantity_form.quantity }}
+                        {{ item.update_quantity_form.update }}
+                        <input type="submit" value="Update" class="inp">
+                        {% csrf_token %}
+                    </form>
+                </td>
+                <td><a href="{% url 'cart:cart_remove' food.slug %}">Remove</a></td>
+                <td class="num">{{ item.price }}₸</td>
+                <td class="num">{{ item.total_price }}₸</td>
+              </tr>
+            {% endwith %}
+          {% endfor %}
+          <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">{{ cart.get_total_cost }}₸</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text-right">
+        <a href="{% url 'main:homepage' %}" class="button light" style="text-decoration: none">Continue shopping</a>
+        <a href="{% url 'orders:order_create' %}" class="button" style="text-decoration: none">Checkout</a>
+      </p>
+    </div>
+{% endblock content %}

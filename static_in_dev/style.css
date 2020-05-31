@@ -1,0 +1,198 @@
+html, body {
+    height: 100%;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+.nav-item {
+    margin-left: .5em;
+}
+
+.navbar-brand {
+    margin-left: 1%
+}
+
+.homepage_part {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    margin: 2em 10%;
+    padding: 0 1%;
+    height: 100%;
+    max-height: max-content;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    padding-top: 2%;
+}
+
+.profile_tbody td {
+    padding: .3rem 1%;
+}
+
+
+/* Restaurant */
+
+.rest_type {
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    height: 22rem;
+}
+
+.rest_type .card {
+    display: inline-block;
+    margin-right: 2%;
+}
+
+
+.back_img {
+    height: 35em;
+    width: 100%;
+    color: black;
+}
+
+
+.foods_info {
+    height: 100%;
+    width: 100%;
+    padding-top: 5%;
+}
+
+
+.food_types, .foods, .base_info {
+    display: inline-block;
+    float: left;
+}
+
+.food_types {
+    height: 100em;
+    width: 25%;
+}
+
+.food_types > .scroll_links {
+    position: sticky;
+    top: 10%;
+    padding: 5%;
+    text-align: center;
+}
+
+.foods {
+    padding: 0.5% 2%;
+    width: 50%;
+}
+
+.particular_food {
+    width: 100%;
+}
+
+
+.particular_food .food_inner_info {
+    width: 60%;
+    float: left;
+    padding: 2%;
+}
+
+.food_inner_info p {
+    margin-bottom: 0;
+    margin-top: 2%;
+    font-size: 14px;
+}
+
+.particular_food .food_img {
+    width: 40%;
+    height: 7.5em;
+    float: left;
+}
+
+
+.food_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.base_info {
+    width: 25%;
+    height: 50em;
+    /*background-color: darkgray;*/
+    padding: 2% 3%;
+}
+
+.base_info p {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.base_info h5 {
+    font-weight: 600;
+}
+
+
+/* Chat */
+
+.chat {
+    height: 30em;
+    width: 60%;
+    margin: auto;
+    overflow: auto;
+    border: 1px grey solid;
+    border-radius: 3px;
+    padding: 2% 1%;
+}
+
+.message_input {
+    width: 60%;
+    margin: auto;
+}
+
+.message_input select {
+    width: 70%;
+    font-size: 16px;
+}
+
+.msg_l, .msg_r {
+    width: 100%;
+}
+
+.msg {
+    width: 50%;
+    background-color: #d5d5d5;
+    border-radius: 5px 5px 5px 0;
+    padding: 1% 3%;
+    margin-top: 1%;
+}
+
+.msg_r .msg {
+    margin-left: auto;
+    margin-right: 0;
+    border-radius: 5px 5px 0 5px;
+}
+
+.msg p {
+    margin-bottom: 0;
+}
+
+.author_name {
+    font-size: 16px;
+    color: dodgerblue;
+}
+
+.msg_text {
+    font-size: 14px;
+}
+
+.author_name .msg_time {
+    color: #636363;
+    font-size: 14px;
+    float: right;
+}
+
+.author_name .msg_time:hover {
+    cursor: text;
+    color: #636363;
+}

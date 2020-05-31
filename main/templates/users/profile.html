@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="info">
+            <table class="table table-sm">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col" colspan="2" style="padding: .3rem 1%"><bold style="color: rgba(248,249,202,0.9); font-size: 27px">Your profile</bold></th>
+                    </tr>
+                  </thead>
+              <tbody class="profile_tbody">
+                <tr>
+                    <td><p style="color: darkgrey">Username:</p></td>
+                    <td><p style="color: black">{{ user.username }}</p></td>
+                </tr>
+                <tr>
+                    <td><p style="color: darkgrey">First name:</p></td>
+                    <td><p style="color: black">{{ user.first_name }}</p></td>
+                </tr>
+                <tr>
+                    <td><p style="color: darkgrey">Last name:</p></td>
+                    <td><p style="color: black">{{ user.last_name }}</p></td>
+                </tr>
+                <tr>
+                    <td><p style="color: darkgrey">city:</p></td>
+                    <td><p style="color: black">{{ profile.city }}</p></td>
+                </tr>
+                <tr>
+                    <td><p style="color: darkgrey">address:</p></td>
+                    <td><p style="color: black">{{ profile.address }}</p></td>
+                </tr>
+                <tr>
+                    <td><p style="color: darkgrey">phone:</p></td>
+                    <td><p style="color: black">{{ profile.phone }}</p></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="edit_button">
+            <a href="{% url 'main:profile_edit' %}" style="text-decoration: none;"><button class="btn btn-primary" style="display: block; margin: auto; width: 10em">Edit profile</button></a>
+        </div>
+    </div>
+{% endblock content %}

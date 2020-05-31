@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block title %}Sign in{% endblock title %}
+
+{% block content %}
+    <div class = "container">
+        <h2>Sign in</h2>
+        <form method="post" style="margin-top: 3%">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% for i in x|rjust:8 %}
+                <br>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Confirm</button>
+            {% for i in x|rjust:6 %}
+                &nbsp;
+            {% endfor %}
+            <button class="btn btn-primary">
+                <a href="{% url 'main:register' %}" style="color: white; text-decoration: none">Sign up</a>
+            </button>
+        </form>
+    </div>
+{% endblock content %}
